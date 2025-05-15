@@ -10,7 +10,7 @@ It aims to provide clean, consistent, and reusable diagrams for cryptographic pr
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/crypto-tikz.git
-````
+   ```
 
 2. Browse the folders to find figures of interest.
 3. Include them in your LaTeX documents:
