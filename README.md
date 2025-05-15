@@ -9,7 +9,7 @@ It aims to provide clean, consistent, and reusable diagrams for cryptographic pr
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/crypto-tikz.git
+   git clone https://github.com/SL2000s/crypto-tikz
    ```
 
 2. Browse the folders to find figures of interest.
