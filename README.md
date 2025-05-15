@@ -3,7 +3,7 @@
 **crypto-tikz** is a (slowly growing) open source library of TikZ figures for cryptography.  
 It aims to provide clean, consistent, and reusable diagrams for cryptographic protocols, primitives, and concepts—ideal for papers, slides, and teaching materials.
 
-> �� **Note**: Some figures require compilation with **LuaLaTeX** due to advanced TikZ or font features.
+> **Note**: Some figures require compilation with **LuaLaTeX** due to advanced TikZ or font features.
 
 ## Getting Started
 
