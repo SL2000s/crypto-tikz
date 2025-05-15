@@ -1,0 +1,45 @@
+\begin{tikzpicture}[scale=1, >=stealth]
+
+    % Define timeline range
+    \def\startYear{2020}
+    \def\endYear{2025}
+    \def\xStart{0}
+    \def\xEnd{10}
+    \def\yBase{0}
+
+    % Draw horizontal timeline
+    \draw[->, thick] (\xStart, \yBase) -- (\xEnd, \yBase) node[right] {Year};
+
+    % Map years to x positions
+    \foreach \year in {2020, 2021, 2022, 2023, 2024, 2025} {
+        \pgfmathsetmacro{\x}{(\year - \startYear)*( (\xEnd - \xStart)/(\endYear - \startYear) )}
+        \draw (\x, \yBase-0.1) -- (\x, \yBase+0.1);
+        \node[below] at (\x, \yBase-0.15) {\footnotesize \year};
+    }
+
+    % Place people (emoji + label)
+    \node at (1, 1) (A) {\emoji{person-white-hair}}; \node[below=2pt] at (1, 0.95) {\tiny Alice};
+    \node at (2.8, 1.2) (B) {\emoji{person-beard}};  \node[below=2pt] at (2.8, 1.15) {\tiny Bob};
+    \node at (4.2, 1.1) (C) {\emoji{technologist}};  \node[below=2pt] at (4.2, 1.05) {\tiny Charlie};
+    \node at (5.8, 1.3) (D) {\emoji{woman}};         \node[below=2pt] at (5.8, 1.25) {\tiny Dana};
+    \node at (7.5, 1.2) (E) {\emoji{person-blond-hair}}; \node[below=2pt] at (7.5, 1.15) {\tiny Erin};
+    \node at (9, 1.1) (F) {\emoji{scientist}};       \node[below=2pt] at (9, 1.05) {\tiny Frank};
+
+    % Optional: lines from emoji to timeline
+    \draw[dashed] (1, 0.55) -- (1, \yBase);
+    \draw[dashed] (2.8, 0.75) -- (2.8, \yBase);
+    \draw[dashed] (4.2, 0.65) -- (4.2, \yBase);
+    \draw[dashed] (5.8, 0.85) -- (5.8, \yBase);
+    \draw[dashed] (7.5, 0.75) -- (7.5, \yBase);
+    \draw[dashed] (9, 0.65) -- (9, \yBase);
+
+    % Adversary
+    \node at (5, 2.4) (Adv) {\emoji{smiling-face-with-horns}};
+    % \node[above=1pt] at (5, 2.2) {\scriptsize \textbf{Adversary}};
+
+    % Red arrows to all participants
+    \foreach \target in {A, B, C, D, E, F} {
+        \draw[<->, red, semithick] (Adv) -- (\target);
+    }
+
+\end{tikzpicture}

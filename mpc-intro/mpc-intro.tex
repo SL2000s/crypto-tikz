@@ -1,0 +1,67 @@
+\begin{tikzpicture}[>=stealth, scale=2.3]
+    \def\width{3}
+    \def\height{1.5}
+    \def\n{6}
+    \def\angleOffset{-30}
+    \def\scalingFactor{2/3}
+    \def\arrowOffset{0.32}
+
+    \foreach \i in {1,...,\n} {
+        \pgfmathparse{360/\n*(\i-1) + \angleOffset}
+        \let\angle\pgfmathresult
+
+        \pgfmathparse{\width*cos(\angle)*\scalingFactor}
+        \let\x\pgfmathresult
+        \pgfmathparse{\height*sin(\angle)*\scalingFactor}
+        \let\y\pgfmathresult
+
+        \pgfmathparse{(\x)*(1 - \arrowOffset)}
+        \let\xArrowStart\pgfmathresult
+        \pgfmathparse{(\y)*(1 - \arrowOffset)}
+        \let\yArrowStart\pgfmathresult
+
+        % Use different emojis
+        \node at (\x,\y) {
+            \ifcase\i
+            \or \emoji{person-white-hair}
+            \or \emoji{woman}
+            \or \emoji{technologist}
+            \or \emoji{person-beard}
+            \or \emoji{person-blond-hair}
+            \or \emoji{scientist}
+            \fi
+        };
+
+        % Add label x_i slightly outside the emoji position
+        \pgfmathsetmacro{\labelDistance}{-0.25}
+        \pgfmathsetmacro{\xLabel}{\x + \labelDistance * cos(\angle)}
+        \pgfmathsetmacro{\yLabel}{\y + \labelDistance * sin(\angle)}
+
+        % Draw arrows starting closer to the center with hardcoded endpoints
+        \ifthenelse{\i=1}{
+            \draw[->] (\xArrowStart+0.2,\yArrowStart-0.1) -- (0.605,-0.205);
+            \node at (\xLabel, \yLabel-0.1) {\scriptsize $x_{\i}$};
+        }{\ifthenelse{\i=2}{
+            \draw[->] (\xArrowStart+0.2,\yArrowStart+0.1) -- (0.605,0.205);
+            \node at (\xLabel, \yLabel+0.1) {\scriptsize $x_{\i}$};
+        }{\ifthenelse{\i=3}{
+            \draw[->] (\xArrowStart,\yArrowStart) -- (0,0.4);
+            \node at (\xLabel, \yLabel) {\scriptsize $x_{\i}$};
+        }{\ifthenelse{\i=4}{
+            \draw[->] (\xArrowStart-0.2,\yArrowStart+0.1) -- (-0.605,0.205);
+            \node at (\xLabel, \yLabel+0.1) {\scriptsize $x_{\i}$};
+        }{\ifthenelse{\i=5}{
+            \draw[->] (\xArrowStart-0.2,\yArrowStart-0.1) -- (-0.605,-0.205);
+            \node at (\xLabel, \yLabel-0.1) {\scriptsize $x_{\i}$};
+        }{\ifthenelse{\i=6}{
+            \draw[->] (\xArrowStart,\yArrowStart) -- (0,-0.4);
+            \node at (\xLabel, \yLabel-0.03) {\scriptsize $x_{\i}$};
+        }{}
+        }}}}}
+    }
+
+    % Draw ellipse around the function
+    \draw[semithick, ellipse, draw] (0,0) ellipse (0.7 and 0.4);
+    \node at (0,0) {\large $f(x_1, \ldots, x_6)$};
+
+\end{tikzpicture}
