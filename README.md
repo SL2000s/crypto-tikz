@@ -1,6 +1,3 @@
-Here's a `README.md` for your **crypto-tikz** library:
-
-````markdown
 # crypto-tikz
 
 **crypto-tikz** is a (slowly growing) open source library of TikZ figures for cryptography.  
